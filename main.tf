@@ -85,6 +85,8 @@ module "lambda_function" {
     }
   }
 
+  cloudwatch_logs_retention_in_days = var.cloudwatch_logs_retention_in_days
+
   environment_variables = {
     TARGET_FQDNS           = join(" ", var.target_fqdn)
     ELB_TG_ARN             = var.target_group_arn
