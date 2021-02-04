@@ -98,13 +98,12 @@ module "lambda_function" {
 # You want to register your db_instances when your apply
 # this module. Don't you ?
 data "aws_lambda_invocation" "this" {
-   function_name = module.lambda_function.this_lambda_function_name
+   function_name = module.lambda_function.this_lambda_function_qualified_arn
 
    input = <<EOJSON
  {
    "Origin": "terraform invokation of ${var.name}"
  }
 EOJSON
-   depends_on = [module.lambda_function]
 }
 
