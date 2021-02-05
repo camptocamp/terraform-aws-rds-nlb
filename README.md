@@ -5,9 +5,9 @@ Most of the python code comes from [1], inspired by [2]
 
 Schema of architecture:
 
----------------------------
-| RDS Events subscription |
----------------------------
+    ---------------------------
+    | RDS Events subscription |
+    ---------------------------
                 |
                 |       -------     ----------     --------------------
                 +------>| SNS |---->| Lambda |---->| NLB target-group |
