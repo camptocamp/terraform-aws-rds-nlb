@@ -40,7 +40,8 @@ resource "aws_sns_topic_subscription" "this" {
 # Create Lambda function with required permissions
 #
 module "lambda_function" {
-  source                 = "terraform-aws-modules/lambda/aws?ref=v2.0.0"
+  source                 = "terraform-aws-modules/lambda/aws"
+  version                = "~> 2.0"
   function_name          = "${var.name}-function"
   description            = "updates target-group with IP from RDS db_instance(s)"
   source_path            = "${path.module}/lambda/"
