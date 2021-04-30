@@ -34,13 +34,13 @@ resource "aws_db_event_subscription" "this" {
 resource "aws_sns_topic_subscription" "this" {
   topic_arn = aws_sns_topic.this.arn
   protocol  = "lambda"
-  endpoint  = module.lambda_function.this_lambda_function_arn
+  endpoint  = module.lambda_function.lambda_function_arn
 }
 
 # Create Lambda function with required permissions
 #
 module "lambda_function" {
-  source                 = "terraform-aws-modules/lambda/aws"
+  source                 = "terraform-aws-modules/lambda/aws?ref=v2.0.0"
   function_name          = "${var.name}-function"
   description            = "updates target-group with IP from RDS db_instance(s)"
   source_path            = "${path.module}/lambda/"
@@ -100,7 +100,7 @@ module "lambda_function" {
 # You want to register your db_instances when your apply
 # this module. Don't you ?
 data "aws_lambda_invocation" "this" {
-   function_name = module.lambda_function.this_lambda_function_qualified_arn
+   function_name = module.lambda_function.lambda_function_qualified_arn
 
    input = <<EOJSON
  {
