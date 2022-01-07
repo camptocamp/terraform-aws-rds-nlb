@@ -48,6 +48,12 @@ variable "cloudwatch_logs_retention_in_days" {
   default     = null
 }
 
+variable "sns_kms_key_id" {
+  description = "KMS encryption key to use for SNS topic at-rest encrption"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "A mapping of tags to assign to all resources"
   type        = map(string)
