@@ -49,7 +49,7 @@ variable "cloudwatch_logs_retention_in_days" {
 }
 
 variable "sns_kms_key_id" {
-  description = "KMS encryption key to use for SNS topic at-rest encrption"
+  description = "KMS encryption key to use for SNS topic at-rest encryption"
   type        = string
   default     = null
 }
