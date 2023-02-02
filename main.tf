@@ -1,6 +1,7 @@
 resource "aws_sns_topic" "this" {
   name = "${var.name}-rds-events"
   tags = var.tags
+  kms_master_key_id = var.sns_kms_key_id
 }
 
 # Subscribe RDS events from db instances and send them to the dedicated SNS topic.
